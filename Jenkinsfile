@@ -37,4 +37,13 @@ pipeline {
             }
         }
     }
+
+    post {
+        success {
+            echo "PIPELINE SUCCESSFUL"
+        }
+        failure {
+            echo "PIPELINE FAILED"
+        }
+    }
 }
