@@ -2,16 +2,42 @@
 <html>
 <head>
     <title>Blood Pressure Monitor</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <h1>Blood Pressure Monitor</h1>
+<div class="container">
+    <h1>🩺 Blood Pressure Monitor</h1>
 
-    <input type="number" id="systolic" placeholder="Systolic">
-    <input type="number" id="diastolic" placeholder="Diastolic">
-    <button onclick="addReading()">Add</button>
+    <div class="nav">
+        <button onclick="showSection('entry')">Enter Reading</button>
+        <button onclick="showSection('graph')">View Trends</button>
+    </div>
 
-    <ul id="list"></ul>
+    <!-- Entry Section -->
+    <div id="entry" class="section">
+        <h2>Enter Blood Pressure</h2>
+        <input type="number" id="systolic" placeholder="Systolic (e.g. 120)">
+        <input type="number" id="diastolic" placeholder="Diastolic (e.g. 80)">
+        <button onclick="submitReading()">Save Reading</button>
+        <p id="message"></p>
+    </div>
 
-    <script src="script.js"></script>
+    <!-- Graph Section -->
+    <div id="graph" class="section" style="display:none;">
+        <h2>Blood Pressure Trends</h2>
+
+        <select id="range" onchange="loadGraph()">
+            <option value="today">Today</option>
+            <option value="week">Last Week</option>
+            <option value="month">Last Month</option>
+            <option value="year">Last Year</option>
+        </select>
+
+        <canvas id="bpChart"></canvas>
+    </div>
+</div>
+
+<script src="/static/script.js"></script>
 </body>
 </html>
